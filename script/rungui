@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+XSOCK=/tmp/.X11-unix
+XAUTH=/tmp/.docker.xauth
+touch $XAUTH
+xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
+set -e
+
+PROJECT_ROOT="$(cd "$(dirname "$0")"; cd ..; pwd)"
+
+docker run -it \
+  --volume=$XSOCK:$XSOCK:rw \
+   --volume=$XAUTH:$XAUTH:rw \
+  --env="XAUTHORITY=${XAUTH}" \
+  --env="DISPLAY" \
+  --env="UID=`id -u $who`" \
+  --env="UID=`id -g $who`" \
+  --name ros-docker-simple \
+  --volume ${PROJECT_ROOT}/catkin_ws:/catkin_ws \
+  --rm \
+  ros-docker-simple "$@"
+
+
+docker exec ros-docker-simple /bin/sh -c "cd catkin_ws;source devel/setup.bash;roslaunch turtlebot3_gazebo simulation.launch ;roslaunch turtlebot3_gazebo simulation.launch"
+# Share a device with the Docker container by adding:
+#   --device=/dev/ttyUSB0 \
+# below the line containing "--name"
