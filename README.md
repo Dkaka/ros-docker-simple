@@ -19,7 +19,7 @@ roslaunch turtlebot3_gazebo simulation.launch
 
 And that's it! Click on "2D Nav Goal" to assign a new target locaction for the robot.
 
-![exmaple interface](https://octodex.github.com/images/yaktocat.png)
+![exmaple interface](https://github.com/Dkaka/ros-docker-simple/blob/master/rviz.png)
  
 ## FAQ
 
