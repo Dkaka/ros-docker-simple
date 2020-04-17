@@ -7,6 +7,8 @@ sudo apt-get install docker
 /script/buildgui
 /script/rungui
 ```
+The workspace consists of a mini-turtlebot example to try out:
+
 After lauching into the container, run the following to initiate turtlebot:
 ```
 cd catkin_ws
@@ -15,9 +17,16 @@ export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_gazebo simulation.launch 
 ```
 
-And that's it!
+And that's it! Click on "2D Nav Goal" to assign a new target locaction for the robot.
 
+![exmaple interface](https://octodex.github.com/images/yaktocat.png)
+ 
 ## FAQ
+
+
+### The difference against the original [ros-docker-simple](https://github.com/tkunic/ros-docker-simple)?
+
+Mostly the GUI pass through using x-server and enabling Intel graphics hardware acceleration.
 
 ### How can I use a different version of ROS?
 
