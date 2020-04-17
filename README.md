@@ -4,8 +4,15 @@ A simple template project for [dockerizing](https://www.docker.com/) your [ROS](
 
 ```
 sudo apt-get install docker
-/script/build
-/script/run
+/script/buildgui
+/script/rungui
+```
+After lauching into the container, run the following to initiate turtlebot:
+```
+cd catkin_ws
+source devel/setup.bash
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_gazebo simulation.launch 
 ```
 
 And that's it!
