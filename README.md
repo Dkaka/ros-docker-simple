@@ -5,7 +5,7 @@ A simple template project for [dockerizing](https://www.docker.com/) your [ROS](
 ```
 sudo apt-get install docker
 /script/buildgui
-/script/rungui
+/script/rungui-intel
 ```
 The workspace consists of a mini-turtlebot example to try out:
 
